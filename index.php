@@ -31,6 +31,10 @@ $channels_euronews = array(
     'euronews_hu' => 'https://hu.euronews.com/api/watchlive.json',
 # 'euronews_al' => 'https://al.euronews.com/api/watchlive.json' // There is an Albanian stream but the API isn't providing the link here.
 );
+$channels_nowtv = array(
+    'nowtv_zhibotai' => '331',
+    'nowtv_xinwentai' => '332'
+);
 
 
 $channel = $_GET['channel'];
@@ -48,6 +52,12 @@ if (array_key_exists($channel, $channels_tvi)) {
     $m3u8_json = file_get_contents_curl($stream_info_url);
     $m3u8 = json_decode($m3u8_json, true);
     header('Location: ' . $m3u8['primary']);
+    die;
+} elseif (array_key_exists($channel, $channels_nowtv)) {
+    $stream_info_json = file_get_contents_curl('https://d1jithvltpp1l1.cloudfront.net/getLiveURL?channelno=' . $channels_nowtv[$channel] . '&mode=prod&audioCode=&format=HLS');
+    $stream_info = json_decode($stream_info_json , true);
+    $m3u8 = $stream_info['asset']['hls']['adaptive']['0'];
+    header('Location: ' . $m3u8);
     die;
 } else {
 die("Channel not provided or doesn't exist.");
