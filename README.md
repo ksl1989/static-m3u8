@@ -21,3 +21,10 @@ The channels currently supported are:
 * TVI Ficção: `tvi_ficcao`
 * Now直播台: `nowtv_zhibotai`
 * Now新聞台: `nowtv_xinwentai`
+* 民視HD: `minshi_hd`
+* 民視第一台: `minshi_diyitai`
+* 民視台灣台: `minshi_taiwantai`
+* 民視新聞台: `minshi_xinwentai`
+* 民視影劇台: `minshi_yingjutai`
+* 民視綜藝台: `minshi_zongyitai`
+* 民視旅遊台: `minshi_lvyoutai`
